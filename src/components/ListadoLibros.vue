@@ -15,7 +15,7 @@
             </div>
         </div>
         <div v-if="cargando" class="text-center my-3">
-            <span>Cargando...</span>
+            <span class="loader"></span>
         </div>
         <div v-else>
             <div v-if="libros.length === 0" class="alert alert-info">

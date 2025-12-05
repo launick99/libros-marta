@@ -116,7 +116,6 @@
         },
         methods: {
             abrirModal(libro = null) {
-                console.info('Abrir modal con libro:', libro);
                 this.libroSeleccionado = libro ? JSON.parse(JSON.stringify(libro)) : null;
                 this.mostrarModal = true;
             },

@@ -1,8 +1,7 @@
 <template>
     <section class="container my-5">
         <div v-if="cargando" class="text-center py-5">
-            <div class="spinner-border text-secondary mb-3" role="status"></div>
-            <p class="text-muted">Cargando libro...</p>
+            <span class="loader"></span>
         </div>
         <div v-else-if="!libro" class="alert alert-warning text-center">
             Libro no encontrado.
