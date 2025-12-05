@@ -14,8 +14,8 @@
                 </button>
             </div>
         </div>
-        <div v-if="cargando" class="text-center my-3">
-            <span class="loader"></span>
+        <div v-if="cargando" class="d-flex justify-content-center align-items-center py-5">
+            <div class="loader"></div>
         </div>
         <div v-else>
             <div v-if="libros.length === 0" class="alert alert-info">

@@ -1,7 +1,7 @@
 <template>
     <section class="container my-5">
-        <div v-if="cargando" class="text-center py-5">
-            <span class="loader"></span>
+        <div v-if="cargando" class="d-flex justify-content-center align-items-center py-5">
+            <div class="loader"></div>
         </div>
         <div v-else-if="!libro" class="alert alert-warning text-center">
             Libro no encontrado.
