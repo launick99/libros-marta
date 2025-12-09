@@ -19,7 +19,7 @@
         </section> 
         <section class="container my-5">
             <h2 class="text-center text-secondary-ml animate__animated animate__fadeIn">Libros en Base de Datos</h2>
-            <table class="table table-striped table-hover" v-if="librosDB.length">
+            <table class="table table-striped table-hover" v-if="libros.length">
                 <thead>
                     <tr>
                         <th>Portada</th>
@@ -30,17 +30,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="libro in librosDB" :key="libro.id">
+                    <tr v-for="libro in libros" :key="libro.id">
                         <td>
                         <img
-                            :src="libro.portada || 'https://images.cdn1.buscalibre.com/fit-in/360x360/dd/cc/ddcc709d0fa44d35e9c9497003926e42.jpg'"
+                            :src="portada(libro)"
                             alt="Portada"
                             style="height: 90px; object-fit: cover;"
                         />
                         </td>
                         <td>{{ libro.title }}</td>
-                        <td>{{ libro.author }}</td>
-                        <td>{{ libro.first_publish_year || 'Desconocido' }}</td>
+                        <td>{{ autores(libro) }}</td>
+                        <td>{{ libro.publish_date || 'Desconocido' }}</td>
                         <td>
                             <button class="btn btn-blue ms-2" @click="abrirModal(libro)">
                                 Editar
@@ -64,23 +64,25 @@
                 libros: [],
                 mostrarModal: false,
                 libroSeleccionado: null,
-                librosDB: [],
             }
         },
         methods: {
             async cargarLibrosDB() {
                 try {
-                    const res = await fetch('http://localhost/server/listarLibros.php');
-                    const data = await res.json();
+                    const response = await fetch('http://localhost/libros-marta/server/listarLibros.php', {
+                        method: 'GET'
+                    });
+                    
+                    const data = await response.json();
                     if (!data.error) {
-                        this.librosDB = data;
+                        this.libros = data;
                     } else {
                         console.error('Error al cargar libros desde BD:', data.error);
-                        this.librosDB = [];
+                        this.libros = [];
                     }
                 } catch (error) {
                     console.error('Error en fetch:', error);
-                    this.librosDB = [];
+                    this.libros = [];
                 }
             },
             abrirModal(libro = null) {
@@ -90,8 +92,19 @@
             cerrarModal() {
                 this.mostrarModal = false;
                 this.libroSeleccionado = null;
-                this.libros = this.obtenerLibrosAgregados();
             },
+            autores(libro){
+                return JSON.parse(libro.authors).join(', ');
+            },
+            portada(libro){
+                return libro.cover  || 'https://images.cdn1.buscalibre.com/fit-in/360x360/dd/cc/ddcc709d0fa44d35e9c9497003926e42.jpg';
+            }
+        },
+        computed:{
+            //
+        },
+        mounted() {
+            this.cargarLibrosDB();
         }
     }
 
