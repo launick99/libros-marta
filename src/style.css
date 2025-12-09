@@ -88,6 +88,10 @@ section {
     background-color: var(--color-secondary) !important;
 }
 
+.border-blue{
+    border-color: var(--color-primary) !important;
+}
+
 .sugerencias-dropdown {
     top: 100%;
     left: 0;

@@ -11,13 +11,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="/">Inicio</router-link>
+                            <router-link class="nav-link pb-0 ps-0 me-2" activeClass="active border-bottom border-2 border-blue" to="/">Inicio</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="/libros">Mis libros</router-link>
+                            <router-link class="nav-link pb-0 ps-0 me-2" activeClass="active border-bottom border-2 border-blue" to="/libros">Mis libros</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link active" to="/Wishlist">Wishlist</router-link>
+                            <router-link class="nav-link pb-0 ps-0 me-2" activeClass="active border-bottom border-2 border-blue" to="/Wishlist">Wishlist</router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-link pb-0 ps-0 me-2" activeClass="active border-bottom border-2 border-blue" to="/gestion">Gestion</router-link>
                         </li>
                     </ul>
                 </div>
